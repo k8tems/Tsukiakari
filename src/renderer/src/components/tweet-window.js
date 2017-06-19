@@ -38,6 +38,7 @@ type State = {
   path: string;
   suggestions: Mentions;
   isDragOver: boolean;
+  inReplyTo: string;
 };
 
 const styles = {

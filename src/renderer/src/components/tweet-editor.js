@@ -15,6 +15,7 @@ const b = B.with('tweet-editor');
 type Props = {
   onChange: Function;
   mentions: Mentions;
+  inReplyTo: string;
 };
 
 type State = {
