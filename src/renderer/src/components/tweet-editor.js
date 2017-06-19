@@ -38,7 +38,7 @@ export default class TweetEditor extends Component {
   constructor(props: Props) {
     super(props);
     this.state = {
-      editorState: EditorState.createWithContent(ContentState.createFromText(`@${props.inReplyTo}`)),
+      editorState: EditorState.createWithContent(ContentState.createFromText(`@${props.inReplyTo} `)),
       suggestions: props.mentions,
     };
     this.onChange = this.onChange.bind(this);
