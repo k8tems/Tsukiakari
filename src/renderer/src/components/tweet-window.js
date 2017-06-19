@@ -38,6 +38,7 @@ type State = {
   path: string;
   suggestions: Mentions;
   isDragOver: boolean;
+  inReplyTo: string;
 };
 
 const styles = {
@@ -95,6 +96,7 @@ export default class TweetWindow extends Component {
       path: '',
       suggestions: props.mentions,
       isDragOver: false,
+      inReplyTo: '',
     };
     this.close = this.close.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -120,9 +122,7 @@ export default class TweetWindow extends Component {
   componentWillReceiveProps(nextProps: Props) {
     const nextId = nextProps.replyTweet.id_str;
     if (nextId && nextId !== this.props.replyTweet.id_str) {
-      this.editor.updateEditorState(
-        `@${nextProps.replyTweet.user.screen_name} ${this.state.status}`
-      );
+      this.setState({ inReplyTo: nextProps.replyTweet.user.screen_name });
     }
     if (nextProps.isOpen !== this.props.isOpen) {
       this.setState({ destroyTooltip: true });
@@ -296,7 +296,7 @@ export default class TweetWindow extends Component {
           {this.renderAccount()}
           <div className={b('textarea-wrapper')}>
             <TweetEditor
-              ref={c => { this.editor = c; }}
+              inReplyTo={this.state.inReplyTo}
               onChange={this.onChange}
               mentions={this.props.mentions}
             />

@@ -15,6 +15,7 @@ const b = B.with('tweet-editor');
 type Props = {
   onChange: Function;
   mentions: Mentions;
+  inReplyTo: string;
 };
 
 type State = {
@@ -38,7 +39,7 @@ export default class TweetEditor extends Component {
   constructor(props: Props) {
     super(props);
     this.state = {
-      editorState: EditorState.createWithContent(ContentState.createFromText('')),
+      editorState: EditorState.createWithContent(ContentState.createFromText(`@${props.inReplyTo} `)),
       suggestions: props.mentions,
     };
     this.onChange = this.onChange.bind(this);
