@@ -121,8 +121,6 @@ export default class TweetWindow extends Component {
   componentWillReceiveProps(nextProps: Props) {
     const nextId = nextProps.replyTweet.id_str;
     if (nextId && nextId !== this.props.replyTweet.id_str) {
-      // `this.editor` is undefined in this function
-      // I have no idea if this is the best way to work around it
       this.setState({ inReplyTo: nextProps.replyTweet.user.screen_name });
     }
     if (nextProps.isOpen !== this.props.isOpen) {
