@@ -297,7 +297,6 @@ export default class TweetWindow extends Component {
           {this.renderAccount()}
           <div className={b('textarea-wrapper')}>
             <TweetEditor
-              ref={(c) => { this.editor = c; }}
               inReplyTo={this.state.inReplyTo}
               onChange={this.onChange}
               mentions={this.props.mentions}
