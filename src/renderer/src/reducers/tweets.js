@@ -145,6 +145,7 @@ export default handleActions({
     };
   },
   DESTROY_FAVORITE_SUCCESS: updateTweet,
+  DESTROY_RETWEET_SUCCESS: updateTweet,
   CREATE_RETWEET_REQUEST: (state, action) => {
     const { account: { id }, tweet } = action.payload;
     const { timeline } = state;
