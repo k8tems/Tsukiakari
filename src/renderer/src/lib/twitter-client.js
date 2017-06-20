@@ -105,6 +105,18 @@ export default class TwitterClient {
     });
   }
 
+  destroyRetweet(params) {
+    return new Promise((resolve, reject) => {
+      this.client.post(
+        'statuses/unretweet',
+        params,
+        (error, tweets) => {
+          if (error) reject(error);
+          else resolve(tweets);
+        });
+    });
+  }
+
   destroyFavorite(params) {
     return new Promise((resolve, reject) => {
       this.client.post(
