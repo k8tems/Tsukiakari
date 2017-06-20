@@ -27,7 +27,7 @@ export default class TweetItemFooter extends Component {
     const { tweet } = this.props;
     // TODO: Fix account
     if (this.props.retweeted) {
-      this.props.destroyRetweet({ account: this.props.accounts[0], tweet });
+      this.props.destroyRetweet(this.props.accounts[0], tweet);
     } else {
       this.props.createRetweet(this.props.accounts[0], tweet);
     }

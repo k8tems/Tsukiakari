@@ -88,6 +88,23 @@ export const createRetweet = (account, tweet) => dispatch => {
   dispatch(action({ account, tweet }));
 };
 
+export const destroyRetweet = (account, tweet) => dispatch => {
+  const { accessToken, accessTokenSecret } = account;
+  const twitter = new Twitter(accessToken, accessTokenSecret);
+  twitter.destroyRetweet({ id: tweet.id_str })
+    .then(res => {
+      const action = createAction('DESTROY_RETWEET_SUCCESS');
+      dispatch(action({ account, tweet: res }));
+    })
+    .catch(error => {
+      log.error(error);
+      const action = createAction('DESTROY_RETWEET_FAIL');
+      dispatch(action({ error }));
+    });
+  const action = createAction('DESTROY_RETWEET_REQUEST');
+  dispatch(action({ account, tweet }));
+};
+
 export const requestDestroyRetweet = createAction('REQUEST_DESTROY_RETWEET');
 
 export const successDestroyRetweet = createAction('SUCCESS_DESTROY_RETWEET');
