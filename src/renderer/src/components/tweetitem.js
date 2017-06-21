@@ -27,12 +27,12 @@ export default class TweetItem extends Component {
     super(props);
     this.state = { destroyTooltip: false };
     this.onAccountClick = ::this.onAccountClick;
+    this.onClick = ::this.onClick;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return !isEqual(this.props, nextProps) || !isEqual(this.state, nextState);
   }
-
 
   onAccountClick() {
 
@@ -219,11 +219,16 @@ export default class TweetItem extends Component {
       </div>
     );
   }
+  
+  onClick() {
+    this.props.openConversation();
+  }
 
   renderTweet(tweet, user, text) {
     return (
       <div className={b('body')}>
         <div
+          onClick={this.onClick}
           onMouseOver={() => this.setState({ destroyTooltip: false })}
           onMouseLeave={() => this.setState({ destroyTooltip: true })}
           className={b('wrapper', { avatar: true })}

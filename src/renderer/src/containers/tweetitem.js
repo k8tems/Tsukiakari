@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import TweetItem from '../components/tweetitem';
 import { openLightBox } from '../actions/lightbox';
+import { openConversation } from '../actions/tweets';
 import { showFullscreenVideo } from '../actions/video';
 
 function mapStateToProps(state, props) {
@@ -15,6 +16,7 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
   return {
     openLightBox: bindActionCreators(openLightBox, dispatch),
+    openConversation: bindActionCreators(openConversation, dispatch),
     showFullscreenVideo: bindActionCreators(showFullscreenVideo, dispatch),
   };
 }
