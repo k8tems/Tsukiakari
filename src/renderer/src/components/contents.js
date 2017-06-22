@@ -12,7 +12,7 @@ export default class Contents extends Component {
     columns: [],
   };
 
-  renserPane() {
+  renderPane() {
     return (
       <SortablePane
         margin={20}
@@ -64,7 +64,7 @@ export default class Contents extends Component {
           {
             isEmpty(this.props.columns)
               ? this.renderMessage()
-              : this.renserPane()
+              : this.renderPane()
           }
       </div>
     );
