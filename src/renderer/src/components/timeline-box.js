@@ -30,6 +30,18 @@ export default class TimelineBox extends Component {
 
   render() {
     const { id, title, icon, subTitle, results } = this.props.column;
+    let content = null;
+    if( this.props.is_conversation_opened ){
+      content = <div></div>
+    } else {
+      content = <Timeline
+        ref="timeline"
+        id={id}
+        results={results}
+        timeline={this.props.timeline}
+        accounts={this.props.accounts}
+      />;
+    }
     return (
       <div className={b()}>
         <div className={b('wrapper', { title: true })}>
@@ -47,13 +59,7 @@ export default class TimelineBox extends Component {
             onClick={this.onClose}
           />
         </div>
-        <Timeline
-          ref="timeline"
-          id={id}
-          results={results}
-          timeline={this.props.timeline}
-          accounts={this.props.accounts}
-        />
+        {content}
       </div>
     );
   }

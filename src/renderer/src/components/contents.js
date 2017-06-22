@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { SortablePane, Pane } from 'react-sortable-pane';
 import { isEmpty } from 'lodash';
-import TimelineBox from './timeline-box';
+import TimelineBox from '../containers/timeline-box';
 import log from '../lib/log';
 import B from '../lib/bem';
 
