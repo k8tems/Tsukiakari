@@ -31,7 +31,7 @@ export default class TimelineBox extends Component {
   render() {
     const { id, title, icon, subTitle, results } = this.props.column;
     let content = null;
-    if( this.props.is_conversation_opened ){
+    if( this.props.isConversationOpened ){
       content = <div></div>
     } else {
       content = <Timeline
