@@ -5,7 +5,7 @@ const defaultState = {
 };
 
 export default handleActions({
-  OPEN_LIGHTBOX: (state, action) => ({
+  OPEN_CONVERSATION: (state, action) => ({
     is_conversation_opened: true,
   }),
 }, defaultState);

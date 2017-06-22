@@ -150,7 +150,4 @@ export const failUploadMedia = createAction('FAIL_UPLOAD_MEDIA');
 
 export const loadFriends = createAction('LOAD_FREINDS');
 
-export const openConversation = () => dispatch => {
-  console.log('Open conversation');
-  dispatch(createAction('OPEN_CONVERSATION'));
-};
+export const openConversation = createAction('OPEN_CONVERSATION');
