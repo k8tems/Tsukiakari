@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Timeline from './timeline';
+import Conversation from './conversation';
 import { isEqual } from 'lodash';
 import B from '../lib/bem';
 
@@ -32,7 +33,7 @@ export default class TimelineBox extends Component {
     const { id, title, icon, subTitle, results } = this.props.column;
     let content = null;
     if( this.props.isConversationOpened ){
-      content = <div></div>
+      content = <Conversation />;
     } else {
       content = <Timeline
         ref="timeline"
