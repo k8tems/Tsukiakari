@@ -66,7 +66,7 @@ export default class Timeline extends Component {
         key={id}
         ref={ref}
       >
-        <TweetItem id={id} timelineKey={key} />
+        <TweetItem id={id} timelineKey={key} timelineId={this.props.id}/>
       </div>
     );
   }

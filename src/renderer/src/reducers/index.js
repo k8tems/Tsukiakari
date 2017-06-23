@@ -7,7 +7,6 @@ import lightbox from './lightbox';
 import notification from './notification';
 import addColumnMenu from './add-column-menu';
 import video from './video';
-import timeline from './timeline';
 
 const rootReducer = combineReducers({
   accounts,
@@ -18,7 +17,6 @@ const rootReducer = combineReducers({
   tweetWindow,
   addColumnMenu,
   video,
-  timeline,
 });
 
 export default rootReducer;

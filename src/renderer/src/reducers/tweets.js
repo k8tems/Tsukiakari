@@ -206,6 +206,7 @@ export default handleActions({
       params,
       contents: [{ account, type, key, subTitle }],
       results: timeline.results.map(result => ({ key, id: result })),
+      isConversationOpened: false,
     });
     return {
       ...state,
@@ -229,6 +230,15 @@ export default handleActions({
       ...state,
       columns,
       filterQueries: queries || [],
+    };
+  },
+  OPEN_CONVERSATION: (state, action) => {
+    const timelineId = action.payload.timelineId;
+    let column = state.columns.filter(column => column.id == timelineId)[0];
+    column.isConversationOpened = true;
+    console.log(column);
+    return {
+      ...state,
     };
   },
   CONNECT_FILTER_STREAM: (state, action) => {

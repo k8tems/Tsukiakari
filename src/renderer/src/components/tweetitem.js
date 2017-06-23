@@ -221,7 +221,10 @@ export default class TweetItem extends Component {
   }
   
   onClick() {
-    this.props.openConversation();
+    this.props.openConversation({
+      timelineId: this.props.timelineId,
+      tweetId: this.props.tweet.id,
+    });
   }
 
   renderTweet(tweet, user, text) {

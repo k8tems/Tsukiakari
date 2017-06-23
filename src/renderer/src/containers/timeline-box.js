@@ -3,7 +3,7 @@ import TimelineBox from '../components/timeline-box';
 
 function mapStateToProps(state) {
   return {
-    isConversationOpened: state.timeline.isConversationOpened,
+    columns: state.columns,
   };
 }
 
