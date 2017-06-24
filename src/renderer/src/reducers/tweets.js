@@ -233,11 +233,14 @@ const actions = {
     };
   },
   OPEN_CONVERSATION: (state, action) => {
-    const timelineId = action.payload.timelineId;
-    let column = state.columns.filter(c => c.id == timelineId)[0];
-    column.isConversationOpened = true;
+    const columns = [];
+    for (let i = 0; i < state.columns.length; i++)
+      columns.push({...state.columns[i]});
+    const col = columns.filter(column => column.id == action.payload.timelineId);
+    col.isConversationOpened = true;
     return {
       ...state,
+      columns,
     };
   },
   CONNECT_FILTER_STREAM: (state, action) => {
