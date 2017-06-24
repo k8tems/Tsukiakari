@@ -256,6 +256,4 @@ const actions = {
   },
 };
 
-const ha = handleActions(actions, defaultState);
-
-export default { actions, ha };
+export default handleActions(actions, defaultState);
