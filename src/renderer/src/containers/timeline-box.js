@@ -3,7 +3,7 @@ import TimelineBox from '../components/timeline-box';
 
 function mapStateToProps(state) {
   return {
-    columns: state.columns,
+    columns: state.tweets.columns,
   };
 }
 

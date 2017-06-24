@@ -16,6 +16,10 @@ export default class TimelineBox extends Component {
     this.onClose = ::this.onClose;
   }
 
+  componentWillReceiveProps(nextProps: Props) {
+    console.log('componentWillReceiveProps');
+  }
+
   shouldComponentUpdate(nextProps) {
     return !isEqual(this.props, nextProps);
   }
