@@ -60,7 +60,7 @@ const updateTweetProperty = (accountId, tweetId, timeline, props) => {
   return timeline;
 };
 
-export default handleActions({
+const actions = {
   RECIEVE_TWEET: (state, action) => {
     // TODO: refactor
     let results;
@@ -97,12 +97,12 @@ export default handleActions({
     // TODO: refactor
     const { account: { id }, tweets, type, params } = action.payload;
     const key = type === 'Search'
-            ? `${params.q}:${type}`
-            : `${id}:${type}`;
+      ? `${params.q}:${type}`
+      : `${id}:${type}`;
     const timeline = state.timeline[key] || { entities: {} };
     const results = tweets.result
-            .filter(result => !(timeline.entities && timeline.entities[result]))
-            .concat(state.timeline.results || []);
+      .filter(result => !(timeline.entities && timeline.entities[result]))
+      .concat(state.timeline.results || []);
     const entities = { ...timeline.entities, ...tweets.entities };
     const columns = createNewColumns(state, results, key);
     return { ...state, timeline: { ...state.timeline, [key]: { results, entities } }, columns };
@@ -189,14 +189,14 @@ export default handleActions({
     const title = type; // TODO: If mixed columns, custom timeline
     const icon = iconSelector[type];
     const key = type === 'Search'
-            ? `${params.q}:${type}`
-            : `${account.id}:${type}`;
+      ? `${params.q}:${type}`
+      : `${account.id}:${type}`;
 
     const timeline = state.timeline[key] || { results: [] }; // TODO: implement mixed timeline
     const { columns } = state;
     const subTitle = type === 'Search'
-            ? params.q
-            : `@${account.screen_name}`;
+      ? params.q
+      : `@${account.screen_name}`;
     columns.unshift({
       id,
       title,
@@ -212,7 +212,7 @@ export default handleActions({
       ...state,
       columns: [...columns],
     };
-  }, 
+  },
   DELETE_COLUMN: (state, action) => {
     const { id, type, params } = action.payload;
     const queries = [...state.filterQueries];
@@ -234,9 +234,8 @@ export default handleActions({
   },
   OPEN_CONVERSATION: (state, action) => {
     const timelineId = action.payload.timelineId;
-    let column = state.columns.filter(column => column.id == timelineId)[0];
+    let column = state.columns.filter(c => c.id == timelineId)[0];
     column.isConversationOpened = true;
-    console.log(column);
     return {
       ...state,
     };
@@ -252,8 +251,11 @@ export default handleActions({
     const { soueces, currentTime } = action.payload;
     return {
       ...state,
-      
+
     };
   },
-}, defaultState);
+};
 
+const ha = handleActions(actions, defaultState);
+
+export default { actions, ha };
