@@ -236,11 +236,12 @@ const actions = {
     const columns = [];
     for (let i = 0; i < state.columns.length; i++)
       columns.push({...state.columns[i]});
-    const col = columns.filter(column => column.id == action.payload.timelineId);
-    col.isConversationOpened = true;
+    let col = columns.filter(column => column.id === action.payload.timelineId);
+    const newColumns = columns.filter(column => column.id === action.payload.timelineId);
+    newColumns.push({...col, isConversationOpened: true});
     return {
       ...state,
-      columns,
+      columns: newColumns,
     };
   },
   CONNECT_FILTER_STREAM: (state, action) => {
