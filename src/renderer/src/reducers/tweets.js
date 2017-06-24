@@ -238,7 +238,7 @@ const actions = {
       columns.push({...state.columns[i]});
     let col = columns.filter(column => column.id === action.payload.timelineId)[0];
     const newColumns = columns.filter(column => column.id !== action.payload.timelineId);
-    newColumns.push(Object.assign({}, col, {isConversationOpened: true}));
+    newColumns.push({...col, isConversationOpened: true});
     return {
       ...state,
       columns: newColumns,
