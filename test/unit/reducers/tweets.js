@@ -8,5 +8,8 @@ describe('Tweets test', () => {
     const newState = handleActions(oldState, action);
     assert.equal(false, oldState.columns[0].isConversationOpened);
     assert.equal(true, newState.columns[0].isConversationOpened);
+    // make sure other properties are preserved
+    assert.equal('1', oldState.columns[0].id);
+    assert.equal('1', newState.columns[0].id);
   });
 });
