@@ -15,9 +15,9 @@ const iconSelector = {
 };
 
 const createNewColumns = (state, results, key) => (
-  state.columns.map(column => {
+  state.columns.map((column) => {
     const newColumn = { ...column };
-    column.contents.forEach(content => {
+    column.contents.forEach((content) => {
       if (`${content.account.id}:${content.type}` === key
           || `${content.subTitle}:${content.type}` === key) {
         newColumn.results = results.map(result => ({ key, id: result }));
@@ -233,12 +233,8 @@ const actions = {
     };
   },
   OPEN_CONVERSATION: (state, action) => {
-    const columns = [];
-    for (let i = 0; i < state.columns.length; i++)
-      columns.push({...state.columns[i]});
-    let col = columns.filter(column => column.id === action.payload.timelineId)[0];
-    const newColumns = columns.filter(column => column.id !== action.payload.timelineId);
-    newColumns.push({...col, isConversationOpened: true});
+    const newColumns = state.columns.map(
+      (col) => col.id === action.payload.timelineId ? { ...col, isConversationOpened: true } : col);
     return {
       ...state,
       columns: newColumns,
