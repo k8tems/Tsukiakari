@@ -8,6 +8,7 @@ describe('Tweets test', () => {
   const action = { payload: { timelineId: '1' }, type: 'OPEN_CONVERSATION'};
   const newState = handleActions(oldState, action);
 
+  // All tests except for the "column order test" should not depend on the order
   function getColumnById(columns, id) {
     return columns.filter(c => c.id === id)[0];
   }
@@ -23,5 +24,7 @@ describe('Tweets test', () => {
   });
 
   it('Column order is preserved', () => {
+    assert.equal('1', oldState.columns[0].id);
+    assert.equal('2', oldState.columns[1].id);
   });
 });
